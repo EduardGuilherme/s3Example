@@ -14,7 +14,7 @@ import java.util.List;
 public class S3Service {
     private final S3Client s3Client;
     private static final String BUCKET =
-            "arn:aws:s3:::bucket-javaaws-566112927423-us-east-2-an";
+            "bucket-javaaws-566112927423-us-east-2-an";
 
     public S3Service(S3Client s3Client){
         this.s3Client = s3Client;
