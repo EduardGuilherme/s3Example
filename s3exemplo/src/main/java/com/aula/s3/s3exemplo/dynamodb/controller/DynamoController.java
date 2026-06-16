@@ -17,19 +17,21 @@ public class DynamoController {
 
     @PostMapping("/save")
     public ResponseEntity<String> save(
-            @RequestParam String id,
+            @RequestParam String personid,
+            @RequestParam String keyranking,
             @RequestParam String nome
     ) {
-        return ResponseEntity.ok(dynamoService.save(id, nome));
+        return ResponseEntity.ok(dynamoService.save(personid, keyranking, nome));
     }
-    @GetMapping("/find/{id}")
-    public ResponseEntity<Map<String, String>> find(@PathVariable String id) {
-        return ResponseEntity.ok(dynamoService.find(id));
+    @GetMapping("/find")
+    public ResponseEntity<Map<String, String>> find(@PathVariable String personid,  @RequestParam String keyranking) {
+        return ResponseEntity.ok(dynamoService.find(personid, keyranking));
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete")
     public ResponseEntity<String> delete(
-            @PathVariable String id
+            @PathVariable String personid,
+            @RequestParam String keyranking
     ) {
-        return ResponseEntity.ok(dynamoService.delete(id));
+        return ResponseEntity.ok(dynamoService.delete(personid, keyranking));
     }
 }

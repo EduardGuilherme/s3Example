@@ -3,6 +3,7 @@ package com.aula.s3.s3exemplo.dynamodb.service;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.*;
+import software.amazon.awssdk.services.s3.endpoints.internal.Value;
 
 
 import java.util.HashMap;
@@ -18,10 +19,11 @@ public class DynamoService {
         this.dynamoDbClient = dynamoDbClient;
     }
 
-    public String save(String id, String nome){
+    public String save(String id, String nome, String key){
         Map<String, AttributeValue> item = new HashMap<>();
 
         item.put("personId", AttributeValue.builder().s(id).build());
+        item.put("keyranking", AttributeValue.builder().s(key).build());
         item.put("nome", AttributeValue.builder().s(nome).build());
 
         PutItemRequest request = PutItemRequest.builder()
@@ -33,10 +35,11 @@ public class DynamoService {
 
         return "Item salvo com sucesso";
     }
-    public Map<String, String> find(String id) {
+    public Map<String, String> find(String id,String keyopt) {
 
         Map<String, AttributeValue> key = new HashMap<>();
         key.put("personId", AttributeValue.builder().s(id).build());
+        key.put("keyranking", AttributeValue.builder().s(keyopt).build());
 
         GetItemRequest request = GetItemRequest.builder()
                 .tableName(TABLE_NAME)
@@ -55,10 +58,11 @@ public class DynamoService {
 
         return result;
     }
-    public String delete(String id) {
+    public String delete(String id,String keyOpt) {
 
         Map<String, AttributeValue> key = new HashMap<>();
         key.put("personId", AttributeValue.builder().s(id).build());
+        key.put("keyranking", AttributeValue.builder().s(keyOpt).build());
 
         DeleteItemRequest request = DeleteItemRequest.builder()
                 .tableName(TABLE_NAME)
