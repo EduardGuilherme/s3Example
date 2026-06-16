@@ -21,7 +21,7 @@ public class DynamoService {
     public String save(String id, String nome){
         Map<String, AttributeValue> item = new HashMap<>();
 
-        item.put("id", AttributeValue.builder().s(id).build());
+        item.put("personId", AttributeValue.builder().s(id).build());
         item.put("nome", AttributeValue.builder().s(nome).build());
 
         PutItemRequest request = PutItemRequest.builder()
@@ -36,7 +36,7 @@ public class DynamoService {
     public Map<String, String> find(String id) {
 
         Map<String, AttributeValue> key = new HashMap<>();
-        key.put("id", AttributeValue.builder().s(id).build());
+        key.put("personId", AttributeValue.builder().s(id).build());
 
         GetItemRequest request = GetItemRequest.builder()
                 .tableName(TABLE_NAME)
@@ -58,7 +58,7 @@ public class DynamoService {
     public String delete(String id) {
 
         Map<String, AttributeValue> key = new HashMap<>();
-        key.put("id", AttributeValue.builder().s(id).build());
+        key.put("personId", AttributeValue.builder().s(id).build());
 
         DeleteItemRequest request = DeleteItemRequest.builder()
                 .tableName(TABLE_NAME)
