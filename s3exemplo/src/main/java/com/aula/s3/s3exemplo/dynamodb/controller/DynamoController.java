@@ -24,12 +24,12 @@ public class DynamoController {
         return ResponseEntity.ok(dynamoService.save(personid, keyranking, nome));
     }
     @GetMapping("/find")
-    public ResponseEntity<Map<String, String>> find(@PathVariable String personid,  @RequestParam String keyranking) {
+    public ResponseEntity<Map<String, String>> find(@RequestParam String personid,  @RequestParam String keyranking) {
         return ResponseEntity.ok(dynamoService.find(personid, keyranking));
     }
     @DeleteMapping("/delete")
     public ResponseEntity<String> delete(
-            @PathVariable String personid,
+            @RequestParam String personid,
             @RequestParam String keyranking
     ) {
         return ResponseEntity.ok(dynamoService.delete(personid, keyranking));
