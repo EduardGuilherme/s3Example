@@ -1,3 +1,17 @@
 spring:
   application:
     name: s3exemplo
+
+  datasource:
+    url: jdbc:mysql://database-1.cr22o8ce8yk2.us-east-2.rds.amazonaws.com:3306/awsclass
+    username: admin
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: true
