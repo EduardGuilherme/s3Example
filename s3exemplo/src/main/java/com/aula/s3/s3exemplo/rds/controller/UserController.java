@@ -4,10 +4,7 @@ import com.aula.s3.s3exemplo.rds.entity.Users;
 import com.aula.s3.s3exemplo.rds.repository.userRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ public class UserController {
     private final userRepository  respository;
 
     @PostMapping("/save")
-    public ResponseEntity<Users> save(Users users){
+    public ResponseEntity<Users> save(@RequestBody Users users){
         return ResponseEntity.ok(respository.save(users));
     }
 
