@@ -2,9 +2,10 @@ package com.aula.s3.s3exemplo.sqs.service;
 
 import com.aula.s3.s3exemplo.sqs.entity.CepEntity;
 import com.aula.s3.s3exemplo.sqs.repository.CepRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CepRdsService {
     private final CepRepository cepRepository;
 
